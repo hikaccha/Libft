@@ -6,7 +6,7 @@
 /*   By: hichikaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:04:19 by hichikaw          #+#    #+#             */
-/*   Updated: 2024/11/16 06:36:21 by hichikaw         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:22:24 by hichikaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	total_size;
 	void	*ptr;
 
+	if (__SIZE_MAX__ / size < nmemb)
+		return (NULL);
 	total_size = nmemb * size;
 	ptr = malloc(total_size);
 	if (ptr == NULL)
