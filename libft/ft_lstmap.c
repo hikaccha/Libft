@@ -6,7 +6,7 @@
 /*   By: hichikaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 04:04:17 by hichikaw          #+#    #+#             */
-/*   Updated: 2024/11/17 16:24:13 by hichikaw         ###   ########.fr       */
+/*   Updated: 2024/11/17 23:13:47 by hichikaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 //	return (new_node);
 //}
 //
-//void	ft_lsclear(t_list **lst, void (*del)(void *))
+//void	ft_lstclear(t_list **lst, void (*del)(void *))
 //{
 //	t_list	*tmp;
 //
@@ -38,29 +38,32 @@
 //	*lst = NULL;
 //}
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void(*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(f)(void *), void (*del)(void *))
 {
 	t_list	*new_list;
-	t_list	*new_node;
+	t_list	*new_nobe;
 	t_list	*last;
 
 	new_list = NULL;
-	last = new_list;
+	last = NULL;
+
 	while (lst)
 	{
-		new_node = ft_lstnew(f(lst->content));
-		if (!new_node)
+		new_nobe = ft_lstnew(f(lst->content));
+		if (!new_nobe)
 		{
 			ft_lstclear(&new_list, del);
 			return (NULL);
 		}
 		if (!new_list)
-			new_list = new_node;
+		{
+			new_list = new_nobe;
+			last = new_nobe;
+		}
 		else
 		{
-			while (last->next)
-				last = last->next;
-			last->next = new_node;
+			last->next = new_nobe;
+			last = new_nobe;
 		}
 		lst = lst->next;
 	}
