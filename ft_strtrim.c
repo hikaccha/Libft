@@ -6,7 +6,7 @@
 /*   By: hichikaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 20:30:46 by hichikaw          #+#    #+#             */
-/*   Updated: 2024/11/16 10:15:00 by hichikaw         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:56:44 by hichikaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,6 @@ int	is_in_set(char c, const char *set)
 	}
 	return (0);
 }
-
-//size_t	ft_strlen(const char *s)
-//{
-//	size_t	len;
-//
-//	len = 0;
-//	while (s[len])
-//		len++;
-//	return (len);
-//}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {

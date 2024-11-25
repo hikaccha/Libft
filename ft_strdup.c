@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hichikaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 10:04:19 by hichikaw          #+#    #+#             */
-/*   Updated: 2024/11/17 20:22:24 by hichikaw         ###   ########.fr       */
+/*   Created: 2024/10/29 17:05:43 by hichikaw          #+#    #+#             */
+/*   Updated: 2024/11/20 09:41:33 by hichikaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//void	*ft_memset(void *s, int c, size_t n)
-//{
-//	unsigned char	*p;
-//
-//	p = s;
-//	while (0 < n)
-//	{
-//		*p++ = (unsigned char)c;
-//		n--;
-//	}
-//	return (s);
-//}
-
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	size_t	total_size;
-	void	*ptr;
+	while (*src++ != '\0')
+		*dest++ = *src++;
+	return (dest);
+}
 
-	if (__SIZE_MAX__ / size < nmemb)
+char	*ft_strdup(const char *s)
+{
+	size_t	len;
+	char	*dup;
+
+	dup = (char *) malloc(ft_strlen(s) + 1);
+	if (!dup)
 		return (NULL);
-	total_size = nmemb * size;
-	ptr = malloc(total_size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_memset(ptr, 0, total_size);
-	return (ptr);
+	len = 0;
+	while (s[len])
+	{
+		dup[len] = s[len];
+		len++;
+	}
+	dup[len] = '\0';
+	return (dup);
 }
