@@ -6,7 +6,7 @@
 /*   By: hichikaw <hichikaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:04:19 by hichikaw          #+#    #+#             */
-/*   Updated: 2024/11/20 17:28:11 by hichikaw         ###   ########.fr       */
+/*   Updated: 2024/11/29 21:07:45 by hichikaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	total_size;
 	void	*ptr;
 
-	total_size = nmemb * size;
-	if (total_size == 0 || total_size / size != nmemb)
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	if (nmemb > __SIZE_MAX__ / size)
 		return (NULL);
+	total_size = nmemb * size;
 	ptr = malloc(total_size);
 	if (ptr == NULL)
 		return (NULL);
@@ -29,10 +31,9 @@ void	*ft_calloc(size_t nmemb, size_t size)
 
 //int	main(void)
 //{
-//	char *str;
+//	void	*ptr;
 //
-//	//str = ft_calloc(0, 0);
-//	str = malloc(0);
-//	printf("%c\n",str[1]);
-//	free(str);
+//	ptr = ft_calloc(__SIZE_MAX__, 2);
+//	if (!ptr)
+//		return (0);
 //}

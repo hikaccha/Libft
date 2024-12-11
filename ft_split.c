@@ -6,7 +6,7 @@
 /*   By: hichikaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 22:47:38 by hichikaw          #+#    #+#             */
-/*   Updated: 2024/11/22 22:09:32 by hichikaw         ###   ########.fr       */
+/*   Updated: 2024/11/30 01:57:54 by hichikaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static size_t	ft_wordcount(const char *s, char c)
 	size_t	count;
 	size_t	i;
 
+	if (!s)
+		return (0);
 	count = 0;
 	i = 0;
 	while (s[i])
@@ -38,6 +40,8 @@ static char	*ft_worddup(const char *s, size_t start, size_t end)
 	char	*word;
 	size_t	i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	word = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (!word)
@@ -48,8 +52,10 @@ static char	*ft_worddup(const char *s, size_t start, size_t end)
 	return (word);
 }
 
-void	free_place(char **res, size_t k)
+static	void	free_place(char **res, size_t k)
 {
+	if (!res)
+		return ;
 	while (k--)
 		free(res[k]);
 	free(res);

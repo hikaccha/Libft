@@ -6,7 +6,7 @@
 /*   By: hichikaw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 20:11:08 by hichikaw          #+#    #+#             */
-/*   Updated: 2024/11/22 13:11:55 by hichikaw         ###   ########.fr       */
+/*   Updated: 2024/11/30 01:31:21 by hichikaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	size_t	j;
 
+	if (!s1 || !s2)
+		return (NULL);
 	i = 0;
 	j = 0;
 	joined_str = (char *) malloc((ft_strlen(s1) + ft_strlen(s2) + 1)

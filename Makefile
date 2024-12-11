@@ -30,16 +30,14 @@ all: $(NAME)
 
 $(NAME): $(OBJC)
 	$(AR) $@ $^
-	ranlib $@
 
 bonus: .bonus_built
 
 .bonus_built: $(OBJCB) $(NAME)
 	$(AR) $(NAME) $(OBJCB)
-	ranlib $(NAME)
 	touch .bonus_built
 	
-%.o: %.c libft.h
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
